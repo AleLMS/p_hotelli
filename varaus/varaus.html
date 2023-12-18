@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="../global.css">
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<body style="position: relative;">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -44,23 +44,37 @@
     height="100%">
 
 -->
-  <div class="container" id="mainContainer">
-    <div id="searchContainer"
-      style="height: 20em; background-color: magenta; display:flex; flex-direction: column; justify-content: center;">
-      <div id="search"
-        style="height: 10em; background-color: black; display:flex; flex-direction: column; justify-content: center;">
-        <form
-          style="display:flex; justify-content: space-between; margin-left:10em; margin-right: 10em; gap: 1em; flex-wrap: wrap;">
-          <input type="text" id="fname" name="fname" style="flex-grow: 1;">
-          <input type="text" id="fname" name="fname" style="flex-grow: 1;">
-          <input type="text" id="fname" name="fname" style="flex-grow: 1;">
-          <input type="submit" value="Submit" style="flex-grow: 1;">
-        </form>
+
+
+  <div class="container-fluid p-0" id="mainContainer">
+
+    <div id="searchResults" class="m-0" style="width: 100%; height: 100em;">
+
+      <div style="height:5em;">
+
       </div>
-    </div>
 
-    <div id="searchResults" style="width: 100%; height: 150em; background-color: aqua;">
+      <form class="m-0 p-4" style="position: sticky; top: 0em; background-color: white; padding-left: 10svw !important; padding-right: 10svw !important;
+                display:flex; justify-content: space-between; margin-left:10em; margin-right: 10em; gap: 1em; flex-wrap: wrap;
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);">
+        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti" style="flex-grow: 1;">
+        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä" style="flex-grow: 1;">
+        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä" style="flex-grow: 1;">
+        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko" style="flex-grow: 1;">
+        <input class="btn btn-outline-info" type="submit" value="Hae" style="flex-grow: 1;">
+      </form>
 
+      <div class="container"
+        style="display:flex; flex-direction: column; height: 100%; align-items: center; padding-top: 5em;">
+
+        <div class="room " style="width: 50em; height: 15em; background-color: aqua;
+                                  display:flex;">
+          <div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
