@@ -9,10 +9,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../global.css">
+
+  <!--temp-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body style="position: relative;">
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71;">
+<body class="bg-body" style="position: relative;">
+  <nav class="navbar navbar-expand-sm navbar-dark"
+    style="background-color: #9cda71; padding: 0.75em; font-size: 1.2em;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -48,58 +52,89 @@
 
   <div class="container-fluid p-0" id="mainContainer">
 
-    <div id="searchResults" class="m-0" style="width: 100%; height: 100em;">
+    <div id="searchResults" class="m-0" style="width: 100%;">
 
       <div style="height:5em;">
 
       </div>
 
-      <form class="m-0 p-4" style="position: sticky; top: 0em; background-color: white; padding-left: 10svw !important; padding-right: 10svw !important;
+      <!-- Huoneiden haku -->
+      <form class="row m-0 p-4" style="position: sticky; top: 0em; background-color: white; padding-left: 10svw !important; padding-right: 10svw !important;
                 display:flex; justify-content: space-between; margin-left:10em; margin-right: 10em; gap: 1em; flex-wrap: wrap;
                 box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);">
-        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti" style="flex-grow: 1;">
-        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä" style="flex-grow: 1;">
-        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä" style="flex-grow: 1;">
-        <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko" style="flex-grow: 1;">
-        <input class="btn btn-outline-info" type="submit" value="Hae" style="flex-grow: 1;">
+        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
+          style="flex-grow: 1;">
+        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä"
+          style="flex-grow: 1;">
+        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä"
+          style="flex-grow: 1;">
+        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko"
+          style="flex-grow: 1;">
+        <input class="col-sm-12 col-md-3 btn btn-outline-primary" type="submit" value="Hae" style="flex-grow: 1;">
       </form>
 
-      <div class="container"
-        style="display:flex; flex-direction: column; height: 100%; align-items: center; padding-top: 5em;">
+      <div class="container-fluid container-lg p-3 pt-0 p-lg-0 mt-5 pb-3" style="">
+        <h2 class="text-secondary">Löytyi X huonetta</h2>
+      </div>
 
-        <div class="room " style="width: 50em; height: 15em; background-color: aqua;
-                                  display:flex;">
-          <div>
+      <div class="container-lg p-0 m-0 m-lg-auto container-fluid"
+        style="display:flex; flex-direction: column; height: 100%; align-items: center;">
+
+        <!--HUONE-->
+        <div class="room shadow row mb-5" style="width: 100%; ">
+
+          <div class="col-12 col-md-5 p-0"
+            style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
+          </div>
+
+          <div class="col-12 col-md-7 m-0 p-5 pt-4 pb-4 bg-white"
+            style="margin-right: 1em; display:flex; flex-direction: column;">
+
+            <h2 class="fw-bold">Superior Twin</h2>
+
+            <div class="pt-2" style="display:flex; gap: 1em;">
+
+              <div style="display:flex; gap: 0.5em;">
+                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+                  <i class="fa fa-users" aria-hidden="true"></i>
+                </div>
+                <p class="text-secondary" style="vertical-align: middle;">1-2 henkilöä</p>
+              </div>
+
+              <div style="display:flex; gap: 0.5em;">
+                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+                  <i class="fa fa-bed" aria-hidden="true"></i>
+                </div>
+                <p class="text-secondary" style="vertical-align: middle;">2 vuodetta</p>
+              </div>
+
+              <div style="display:flex; gap: 0.5em;">
+                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+                  <i class="fa fa-shower" aria-hidden="true"></i>
+                </div>
+                <p class="text-secondary" style="vertical-align: middle;">Sauna</p>
+              </div>
+            </div>
+
+            <p class="pt-2" style="flex-grow: 1;">
+              <!--<p class="fw-bold mb-2 p-0">Superior Twin</p>-->
+              Superior Twin-huoneet erillisine vuoteineen sijaitsevat päärakennuksen ylimmissä kerroksissa.
+              Seinänlevyinen
+              ikkuna tuo
+              valoa huoneeseen ja voit katsella niistä maisemia ja lentokoneita. Näissä Energy-huoneissa sinua
+              hemmottelevat
+              kylpytakit ja -tossut sekä valikoima kylpyhuonetuotteita. Flamingo Spa Kylpylän liput myydään erikseen
+              vesipuiston
+              vastaanotosta.
+            </p>
+
+            <div class="pt-4" style="display:flex; justify-content: space-between;">
+              <p class="fs-4 p-0 m-0" style="">150€ </p>
+              <button class="btn btn-primary p-5 pt-0 pb-0" style="">Varaa</button>
+            </div>
 
           </div>
-        </div>
 
-        <div class="room mt-5 " style="width: 50em; height: 15em; background-color: aqua;
-                                                  display:flex;">
-          <div>
-
-          </div>
-        </div>
-
-        <div class="room mt-5 " style="width: 50em; height: 15em; background-color: aqua;
-                                                                  display:flex;">
-          <div>
-
-          </div>
-        </div>
-
-        <div class="room mt-5 " style="width: 50em; height: 15em; background-color: aqua;
-                                                                          display:flex;">
-          <div>
-
-          </div>
-        </div>
-
-        <div class="room mt-5 " style="width: 50em; height: 15em; background-color: aqua;
-                                                                                  display:flex;">
-          <div>
-
-          </div>
         </div>
 
       </div>
@@ -146,7 +181,8 @@
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <h6 class="text-uppercase fw-bold mb-4">Päärynähotellit Oy</h6>
-            <p>Päärynähotellit on perustettu vuonna 2023. Se on osakeyhtiö, jonka kotipaikka on Oulu, ja pääasiallinen
+            <p>Päärynähotellit on perustettu vuonna 2023. Se on osakeyhtiö, jonka kotipaikka on Oulu, ja
+              pääasiallinen
               toimiala hotellit.</p>
           </div>
 
