@@ -67,26 +67,30 @@
 
         <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
           <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
+          <select class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
             style="text-indent: 1.75em; height:100%; width:100%">
+            <option>{PH}Hotel 1</option>
+            <option>{PH}Hotel 2</option>
+            <option>{PH}Hotel 3</option>
+            <option>{PH}Hotel 4</option>
+          </select>
         </div>
 
         <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
           <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko"
+          <input class="rounded-2" type="number" min="1" max="6" id="fname" name="fname" placeholder="Huoneen koko"
             style="text-indent: 1.75em; height:100%; width:100%">
         </div>
 
         <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
           <i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä"
+          <input class="rounded-2" type="date" id="fname" name="fname" placeholder="Saapumis päivä"
             style="text-indent: 1.75em; height:100%; width:100%">
         </div>
 
-
         <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
           <i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä"
+          <input class="rounded-2" type="date" id="fname" name="fname" placeholder="Lähtö päivä"
             style="text-indent: 1.75em; height:100%; width:100%">
         </div>
 
