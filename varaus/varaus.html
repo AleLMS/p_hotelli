@@ -46,34 +46,61 @@
     class="img-fluid"
     alt="Image not found"
     height="100%">
-
--->
-
+  -->
 
   <div class="container-fluid p-0" id="mainContainer">
 
     <div id="searchResults" class="m-0" style="width: 100%;">
 
-      <div style="height:5em;">
+      <div style="height:5svw;">
 
       </div>
 
       <!-- Huoneiden haku -->
-      <form class="row m-0 p-4" style="position: sticky; top: 0em; background-color: white; padding-left: 10svw !important; padding-right: 10svw !important;
-                display:flex; justify-content: space-between; margin-left:10em; margin-right: 10em; gap: 1em; flex-wrap: wrap;
-                box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);">
-        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
-          style="flex-grow: 1;">
-        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä"
-          style="flex-grow: 1;">
-        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä"
-          style="flex-grow: 1;">
-        <input class="col-1 col-md-2 rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko"
-          style="flex-grow: 1;">
-        <input class="col-sm-12 col-md-3 btn btn-outline-primary" type="submit" value="Hae" style="flex-grow: 1;">
+      <form class="p-2 pt-md-4 pb-md-4 m-0 row" style="position: sticky; top: 0em; background-color: white;
+                box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+                ">
+
+        <div class="col-1 d-none d-md-block" style="">
+
+        </div>
+
+        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+          <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
+            style="text-indent: 1.75em; height:100%; width:100%">
+        </div>
+
+        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+          <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Huoneen koko"
+            style="text-indent: 1.75em; height:100%; width:100%">
+        </div>
+
+        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+          <i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Saapumis päivä"
+            style="text-indent: 1.75em; height:100%; width:100%">
+        </div>
+
+
+        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+          <i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+          <input class="rounded-2" type="text" id="fname" name="fname" placeholder="Lähtö päivä"
+            style="text-indent: 1.75em; height:100%; width:100%">
+        </div>
+
+        <div class="col-12 col-md-2 " style="">
+          <input class="btn btn-outline-primary" type="submit" value="Hae" style="width: 100%; ">
+        </div>
+
+        <div class="col-1 d-none d-md-block" style="">
+
+        </div>
+
       </form>
 
-      <div class="container-fluid container-lg p-3 pt-0 p-lg-0 mt-5 pb-3" style="">
+      <div class=" container-fluid container-lg p-3 pt-0 p-lg-0 mt-5 pb-3" style="">
         <h2 class="text-secondary">Löytyi X huonetta</h2>
       </div>
 
