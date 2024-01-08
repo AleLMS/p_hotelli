@@ -46,9 +46,11 @@ function GetBookedRooms($hotel, $size, $startDate, $endDate)
                             WHERE 
                             hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm 
                             OR
-                            hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm;');
+                            hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm
+                            OR
+                            hotelli_ID = ? AND vuodepaikat >= ? AND ? < alku_pvm AND ? > loppu_pvm;');
 
-    $bookedRoomsQuery->bind_param('iisiis', $hotel, $size, $startDate, $hotel, $size, $endDate);
+    $bookedRoomsQuery->bind_param('iisiisiiss', $hotel, $size, $startDate, $hotel, $size, $endDate, $hotel, $size, $startDate, $endDate);
     $bookedRoomsQuery->execute();
 
     $result = $bookedRoomsQuery->get_result();
