@@ -9,9 +9,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../global.css">
+  <link rel="stylesheet" href="varaus.css">
 
   <!--temp-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!--own-->
+  <script type="module" src="varaus.js"></script>
 </head>
 
 <body class="bg-body" style="position: relative;">
@@ -57,53 +61,56 @@
       </div>
 
       <!-- Huoneiden haku -->
-      <form class="p-2 pt-md-4 pb-md-4 m-0 row" style="position: sticky; top: 0em; background-color: white;
-                box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
-                ">
+      <div style="position: sticky; top: 0em; box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);">
+        <div class="p-0 container-fluid container-lg">
+          <form id="searchForm" name="searchForm" class="p-2 pt-md-4 pb-md-4 m-0 row" style=" background-color: white;">
+            <div class="col-1 d-none d-lg-block" style="">
 
-        <div class="col-1 d-none d-md-block" style="">
+            </div>
 
+            <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+              <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+              <select class="rounded-2" type="text" id="sijainti" name="sijainti" placeholder="Sijainti"
+                style="text-indent: 0.70em; height:100%; width:100%">
+                <option value="1">{PH}Hotel 1</option>
+                <option value="2">{PH}Hotel 2</option>
+                <option value="3">{PH}Hotel 3</option>
+                <option value="4">{PH}Hotel 4</option>
+              </select>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+              <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
+              <input class="rounded-2" type="number" min="1" max="6" id="huoneenKoko" name="huoneenKoko"
+                placeholder="Huoneen koko" style="text-indent: 1.75em; height:100%; width:100%">
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+              <!--<i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
+              <input class="rounded-2" type="date" id="startDate" name="startDate" placeholder="Saapumis päivä"
+                dir="rtl" style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;">
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
+              <!--<i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
+              <input class="rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä" dir="rtl"
+                style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;  ">
+            </div>
+
+            <div class="col-12 col-lg-2 mt-0 mt-md-2 mt-lg-0" style="">
+              <input class="btn btn-outline-primary" type="submit" id="sendSearch" name="sendSearch" value="Hae"
+                style="width: 100%; ">
+            </div>
+
+            <div class="col-1 d-none d-lg-block" style="">
+
+            </div>
+
+          </form>
         </div>
+      </div>
 
-        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
-          <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <select class="rounded-2" type="text" id="fname" name="fname" placeholder="Sijainti"
-            style="text-indent: 1.75em; height:100%; width:100%">
-            <option>{PH}Hotel 1</option>
-            <option>{PH}Hotel 2</option>
-            <option>{PH}Hotel 3</option>
-            <option>{PH}Hotel 4</option>
-          </select>
-        </div>
-
-        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
-          <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="number" min="1" max="6" id="fname" name="fname" placeholder="Huoneen koko"
-            style="text-indent: 1.75em; height:100%; width:100%">
-        </div>
-
-        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
-          <i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="date" id="fname" name="fname" placeholder="Saapumis päivä"
-            style="text-indent: 1.75em; height:100%; width:100%">
-        </div>
-
-        <div class="col-6 col-md-2 mb-2 m-md-0" style="min-height: 2.25rem;">
-          <i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-          <input class="rounded-2" type="date" id="fname" name="fname" placeholder="Lähtö päivä"
-            style="text-indent: 1.75em; height:100%; width:100%">
-        </div>
-
-        <div class="col-12 col-md-2 " style="">
-          <input class="btn btn-outline-primary" type="submit" value="Hae" style="width: 100%; ">
-        </div>
-
-        <div class="col-1 d-none d-md-block" style="">
-
-        </div>
-
-      </form>
-
+      <!-- DISPLAY ROOMS -->
       <div class=" container-fluid container-lg p-3 pt-0 p-lg-0 mt-5 pb-3" style="">
         <h2 class="text-secondary">Löytyi X huonetta</h2>
       </div>
@@ -236,6 +243,64 @@
     </section>
   </footer>
 
+  <template>
+    <!--HUONE-->
+    <div class="room shadow row mb-5" style="width: 100%; ">
+
+      <div class="col-12 col-md-5 p-0"
+        style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
+      </div>
+
+      <div class="col-12 col-md-7 m-0 p-5 pt-4 pb-4 bg-white"
+        style="margin-right: 1em; display:flex; flex-direction: column;">
+
+        <h2 class="fw-bold">Superior Twin</h2>
+
+        <div class="pt-2" style="display:flex; gap: 1em;">
+
+          <div style="display:flex; gap: 0.5em;">
+            <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+              <i class="fa fa-users" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="vertical-align: middle;">1-2 henkilöä</p>
+          </div>
+
+          <div style="display:flex; gap: 0.5em;">
+            <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+              <i class="fa fa-bed" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="vertical-align: middle;">2 vuodetta</p>
+          </div>
+
+          <div style="display:flex; gap: 0.5em;">
+            <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
+              <i class="fa fa-shower" aria-hidden="true"></i>
+            </div>
+            <p class="text-secondary" style="vertical-align: middle;">Sauna</p>
+          </div>
+        </div>
+
+        <p class="pt-2" style="flex-grow: 1;">
+          <!--<p class="fw-bold mb-2 p-0">Superior Twin</p>-->
+          Superior Twin-huoneet erillisine vuoteineen sijaitsevat päärakennuksen ylimmissä kerroksissa.
+          Seinänlevyinen
+          ikkuna tuo
+          valoa huoneeseen ja voit katsella niistä maisemia ja lentokoneita. Näissä Energy-huoneissa sinua
+          hemmottelevat
+          kylpytakit ja -tossut sekä valikoima kylpyhuonetuotteita. Flamingo Spa Kylpylän liput myydään erikseen
+          vesipuiston
+          vastaanotosta.
+        </p>
+
+        <div class="pt-4" style="display:flex; justify-content: space-between;">
+          <p class="fs-4 p-0 m-0" style="">150€ </p>
+          <button class="btn btn-primary p-5 pt-0 pb-0" style="">Varaa</button>
+        </div>
+
+      </div>
+
+    </div>
+  </template>
 </body>
 
 </html>
