@@ -28,7 +28,9 @@ function ajaxSearch() {
 
     ajax.onload = async () => {
         if (ajax.status === 200) {
+            console.log(ajax.responseText);
             let results = JSON.parse(ajax.responseText);
+            console.log(results);
             document.getElementById('roomsContainer').innerHTML = '<div id="displayRoomsAfter" style="display: none; "></div>';
             await results.forEach((room) => AddNewRoom(room));
         } else {
@@ -53,5 +55,6 @@ function ajaxSearch() {
 async function AddNewRoom(input) {
     let entryPoint = document.getElementById('displayRoomsAfter');
     let room = new Room(input['huone_ID'], input['hotelli_ID'], input['vuodepaikat']);
+    console.log(room);
     room.displayBefore(entryPoint, 'roomTemplate');
 }

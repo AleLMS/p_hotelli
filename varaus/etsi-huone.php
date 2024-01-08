@@ -70,13 +70,25 @@ function GetBookedRooms($hotel, $size, $startDate, $endDate)
 
 function filterBookedRooms($a, $b)
 {
-    $result = (array) null;
-    foreach ($a as $e) {
-        foreach ($b as $e2) {
-            if ($e['huone_ID'] === $e2['huone_ID']) continue;
-            else array_push($result, $e);
-        }
+    $result = (array)null;
+    $idsToRemove = (array)null;
+    foreach ($b as $booked) {
+        array_push($idsToRemove, (int)$booked['huone_ID']);
     }
+
+    foreach ($a as $room) {
+        $filter = false;
+
+        foreach ($idsToRemove as $id) {
+            if ((int)$room['huone_ID'] === $id) {
+                $filter = true;
+                break;
+            }
+        }
+
+        if (!$filter) array_push($result, $room);
+    }
+
     return $result;
 }
 
