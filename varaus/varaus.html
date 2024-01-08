@@ -61,7 +61,7 @@
       </div>
 
       <!-- Huoneiden haku -->
-      <div style="position: sticky; top: 0em; box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);">
+      <div style="position: sticky; top: 0em; box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3); background-color: white;">
         <div class="p-0 container-fluid container-lg">
           <form id="searchForm" name="searchForm" class="p-2 pt-md-4 pb-md-4 m-0 row" style=" background-color: white;">
             <div class="col-1 d-none d-lg-block" style="">
@@ -115,11 +115,13 @@
         <h2 class="text-secondary">Löytyi X huonetta</h2>
       </div>
 
-      <div class="container-lg p-0 m-0 m-lg-auto container-fluid"
+      <div id="roomsContainer" class="container-lg p-0 m-0 m-lg-auto container-fluid"
         style="display:flex; flex-direction: column; height: 100%; align-items: center;">
 
+        <div id="displayRoomsAfter" style="display:none;"></div>
+
         <!--HUONE-->
-        <div class="room shadow row mb-5" style="width: 100%; ">
+        <!--<div class="room shadow row mb-5" style="width: 100%; ">
 
           <div class="col-12 col-md-5 p-0"
             style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
@@ -155,7 +157,6 @@
             </div>
 
             <p class="pt-2" style="flex-grow: 1;">
-              <!--<p class="fw-bold mb-2 p-0">Superior Twin</p>-->
               Superior Twin-huoneet erillisine vuoteineen sijaitsevat päärakennuksen ylimmissä kerroksissa.
               Seinänlevyinen
               ikkuna tuo
@@ -173,7 +174,7 @@
 
           </div>
 
-        </div>
+        </div>-->
 
       </div>
     </div>
@@ -243,9 +244,9 @@
     </section>
   </footer>
 
-  <template>
+  <template id="roomTemplate">
     <!--HUONE-->
-    <div class="room shadow row mb-5" style="width: 100%; ">
+    <div id="room{{ID}}" class="room shadow row mb-5" style="width: 100%; ">
 
       <div class="col-12 col-md-5 p-0"
         style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
@@ -262,7 +263,7 @@
             <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
               <i class="fa fa-users" aria-hidden="true"></i>
             </div>
-            <p class="text-secondary" style="vertical-align: middle;">1-2 henkilöä</p>
+            <p class="text-secondary" style="vertical-align: middle;">1-{{vuodepaikat}} henkilöä</p>
           </div>
 
           <div style="display:flex; gap: 0.5em;">

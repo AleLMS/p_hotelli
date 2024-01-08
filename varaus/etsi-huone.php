@@ -21,7 +21,7 @@ function GetRooms($hotel, $size)
 
     $result = $stmt->get_result();
 
-    if ($result->num_rows <= 0) exit(json_encode("vittu"));
+    if ($result->num_rows <= 0) return null;
 
     while ($row = $result->fetch_assoc()) {
         $rooms[] = $row;
@@ -46,7 +46,7 @@ function GetBookedRooms($hotel, $size, $startDate, $endDate)
                             WHERE 
                             hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm 
                             OR
-	                        hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm;');
+                            hotelli_ID = ? AND vuodepaikat >= ? AND ? BETWEEN alku_pvm AND loppu_pvm;');
 
     $bookedRoomsQuery->bind_param('iisiis', $hotel, $size, $startDate, $hotel, $size, $endDate);
     $bookedRoomsQuery->execute();
@@ -96,9 +96,9 @@ $rooms = GetRooms((int)$hotel, (int)$size);
 $booked = GetBookedRooms((int)$hotel, (int)$size, $startDate, $endDate);
 
 if (!empty($booked)) $availableRooms = filterBookedRooms($rooms, $booked);
-else
-    $availableRooms = $rooms;
+else $availableRooms = $rooms;
 
 // send data back to the front-end
-exit(json_encode($availableRooms));
+if (empty($availableRooms)) exit(json_encode("No rooms found."));
+else echo (json_encode($availableRooms));
 ?>

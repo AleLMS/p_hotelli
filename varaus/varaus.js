@@ -1,4 +1,4 @@
-import { Huone } from "./huone.js";
+import { Room } from "./huone.js";
 
 // Document ready
 window.addEventListener('load', function () {
@@ -26,16 +26,17 @@ function ajaxSearch() {
 
     ajax.open('POST', 'etsi-huone.php', true);
 
-    ajax.onload = () => {
+    ajax.onload = async () => {
         if (ajax.status === 200) {
-            console.log(ajax.responseText)
+            let results = JSON.parse(ajax.responseText);
+            document.getElementById('roomsContainer').innerHTML = '<div id="displayRoomsAfter" style="display: none; "></div>';
+            await results.forEach((room) => AddNewRoom(room));
         } else {
-            console.log("error: " + ajax.status);
+            console.log(ajax.status + " " + ajax.statusText);
         }
     }
 
-    console.log(Object.fromEntries(document.forms['searchForm']));
-
+    //console.log(Object.fromEntries(document.forms['searchForm']));
 
     const searchData = {
         location: document.getElementById("sijainti").value,
@@ -47,4 +48,10 @@ function ajaxSearch() {
     const jsonData = JSON.stringify(searchData);
 
     ajax.send(jsonData);
+}
+
+async function AddNewRoom(input) {
+    let entryPoint = document.getElementById('displayRoomsAfter');
+    let room = new Room(input['huone_ID'], input['hotelli_ID'], input['vuodepaikat']);
+    room.displayBefore(entryPoint, 'roomTemplate');
 }
