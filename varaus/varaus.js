@@ -15,12 +15,6 @@ window.addEventListener('load', function () {
 
 }, false);
 
-// Find rooms
-
-function searchRooms() {
-    document.getElementById("a").insertAdjacentHTML('beforebegin', "hello");
-}
-
 function ajaxSearch() {
     let ajax = new XMLHttpRequest();
 
