@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   
   <link rel="stylesheet" href="vieraskirja.css">
   <link rel="stylesheet" href="global.css">
@@ -28,10 +29,11 @@
 
     if(isset($_POST["submit"])){
         $nimi = $_POST["name"];
-        $viesti = $_POST["textarea"];
+        $viesti = $_POST["message"];
         $aika = date("Y-m-d");
+        $arvio = $_POST["arvio"];
 
-        $sql = "INSERT INTO messages (nimi, viesti, aika) VALUES ('$nimi', '$viesti', '$aika')";
+        $sql = "INSERT INTO messages (nimi, viesti, aika, arvio) VALUES ('$nimi', '$viesti', '$aika', '$arvio')";
         if ($conn->query($sql) === TRUE) {
             $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
             $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -46,7 +48,7 @@
         $conn->close();
   /*   */   
     ?>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71; padding: 0.75em; font-size: 1.2em;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,24 +67,27 @@
     </div>
 </nav>
   
-<div id="mainContainer">
+
  
         <!--kuva  
         <img class="image" src="vieraskirjantausta.png" class="img-fluid" alt="Image not found" width="100%" height="100%">
        --> 
         <!-- tekstikentät-->
-        <div class="container" id="textbox" style="background-image: url('vieraskirjantausta.png');">
+        <div class="container-fluid" id="mainContainer" style="background-image: url('vieraskirjantausta.png'); background-position: center;
+        background-repeat: no-repeat; background-size: cover; position: relative;">
             <h1 class="h1">Vieraskirja</h1><br>
-            <table class="table table-light table-borderless table-rounded">
+            <table class="table table-light table-borderless" id="table" style="border-radius: 5px; opacity: 0.7;">
               <thead>
                 <th>Nimi</th>
                 <th>Palaute</th>
+                <th>Aika</th>
                 <th>Arvio</th>
               </thead>
               <tbody>
               <?php foreach ($messages as $message): ?>
                 <tr>
-                  <td> <?php echo $message['aika']; ?></td>
+                  <td> -----------------</td>
+                  <td></td>
                   <td></td>
                   <td></td>
                 </tr>
@@ -90,26 +95,34 @@
                     <td><b> <?php echo $message['nimi']; ?> </b></td>
                     <td><i>"<?php echo $message['viesti'] ?>"</i> </td>
                     <td><b> <?php echo $message['aika']; ?></b> </td>
+                    <td> <?php for ($i = 1; $i <= $message['arvio']; $i++){
+                    echo '<img src="paaryna.png" width="30px" height="30px">';
+                    }?></td>
                 </tr>
                 <?php endforeach; ?>
                 
               
               </tbody>
+              
             </table>
+            <h4 class="text-white" >Kirjoita vieraskirjaan kokemuksestasi hotellissamme täyttämällä alla oleva lomake. Voit arvioida kokemuksesi päärynöillä.</h4>
                <!-- form   -->
                 <form id="lomake" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       
                    <div class="row mt-3 text-center" id="input">
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name"></div>
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg"  id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message"></div>
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"><img src="paaryna.png" width="40px" height="40px" alt="Image not found">
-                        <img src="paaryna.png" width="40px" height="40px" alt="Image not found">
-                        <img src="paaryna.png" width="40px" height="40px" alt="Image not found">
-                        <img src="paaryna.png" width="40px" height="40px" alt="Image not found">
-                        <img src="paaryna.png" width="40px" height="40px" alt="Image not found"></div>
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" type="submit" name="submit"></div>
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name"></div>
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg"  id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message"></div>
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4" >
+                        <button type="button" class="btn paarynat " onclick="rating(1);" id="paaryna1"><img  src="paaryna.png" width="30px" height="30px" alt="Image not found" id="p1"></button>
+                        <button type="button" class="btn paarynat" onclick="rating(2);" id="paaryna2"><img  src="paaryna.png" width="30px" height="30px" alt="Image not found" id="p2"></button>
+                        <button type="button" class="btn paarynat" onclick="rating(3);" id="paaryna3"><img  src="paaryna.png" width="30px" height="30px" alt="Image not found" id="p3"></button>
+                        <button type="button" class="btn paarynat" onclick="rating(4);" id="paaryna4"><img  src="paaryna.png" width="30px" height="30px" alt="Image not found" id="p4"></button>
+                        <button type="button" class="btn paarynat" onclick="rating(5);" id="paaryna5"><img  src="paaryna.png" width="30px" height="30px" alt="Image not found" id="p5"></button>
+                        <input type="hidden"  name="arvio" id="arvio" ></div>
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" type="submit" name="submit"></div>
                     </div>
-          </div>
+                  </form>
+        </div>
 
         <!-- Maps -->
         <!--<div class="container" style="text-align: center;">
@@ -119,7 +132,7 @@
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>-->
         
-</div>
+
 
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted">
@@ -179,5 +192,6 @@
     </div>
   </section>
 </footer>
+<script src="vieraskirja.js"></script>
 </body>
 </html>
