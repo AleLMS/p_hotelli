@@ -29,3 +29,21 @@ input {
 .fadeIn {
     animation: 1s ease-out 0s 1 fade-in;
 }
+
+
+
+input[type=number] {
+    -moz-appearance: textfield !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: sticky;
+    right: 85%;
+}

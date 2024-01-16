@@ -61,9 +61,11 @@
       </div>
 
       <!-- Huoneiden haku -->
-      <div style="position: sticky; top: 0em; box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3); background-color: white;">
+      <div
+        style="position: sticky; top: 0em; box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3); background-color: white; z-index: 5;">
         <div class="p-0 container-fluid container-lg">
-          <form id="searchForm" name="searchForm" class="p-2 pt-md-4 pb-md-4 m-0 row" style=" background-color: white;">
+          <form id="searchForm" name="searchForm" class="p-2 pt-md-4 pb-md-4 m-0 row" style=" background-color: white;"
+            method="get">
             <div class="col-1 d-none d-lg-block" style="">
 
             </div>
@@ -71,7 +73,7 @@
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
               <select class="rounded-2" type="text" id="sijainti" name="sijainti" placeholder="Sijainti"
-                style="text-indent: 0.70em; height:100%; width:100%">
+                style="text-indent: 0.70em; height:100%; width:100%" value="1" required>
                 <option value="1">{PH}Hotel 1</option>
                 <option value="2">{PH}Hotel 2</option>
                 <option value="3">{PH}Hotel 3</option>
@@ -82,19 +84,21 @@
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
               <input class="rounded-2" type="number" min="1" max="6" id="huoneenKoko" name="huoneenKoko"
-                placeholder="Huoneen koko" style="text-indent: 1.75em; height:100%; width:100%">
+                placeholder="Huoneen koko" style="text-indent: 1.75em; height:100%; width:100%" value="1" required>
             </div>
 
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <!--<i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
               <input class="rounded-2" type="date" id="startDate" name="startDate" placeholder="Saapumis päivä"
-                dir="rtl" style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;">
+                dir="rtl" style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
+                value="1990-01-01" required>
             </div>
 
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <!--<i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
               <input class="rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä" dir="rtl"
-                style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;  ">
+                style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
+                value="1991-01-01" required>
             </div>
 
             <div class="col-12 col-lg-2 mt-0 mt-md-2 mt-lg-0" style="">
@@ -112,7 +116,7 @@
 
       <!-- DISPLAY ROOMS -->
       <div class=" container-fluid container-lg p-3 pt-0 p-lg-0 mt-5 pb-3" style="">
-        <h2 class="text-secondary">Löytyi X huonetta</h2>
+        <h2 id="numResults" class="text-secondary">Löytyi 0 huonetta</h2>
       </div>
 
       <div id="roomsContainer" class="container-lg p-0 m-0 m-lg-auto container-fluid"
