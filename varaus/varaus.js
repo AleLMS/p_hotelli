@@ -4,6 +4,13 @@ import { Room } from "./huone.js";
 window.addEventListener('load', function () {
     dateEvents();
 
+    // Limit room size selection
+    const roomSizeSelector = document.getElementById('huoneenKoko');
+    roomSizeSelector.addEventListener('change', function (e) {
+        if (roomSizeSelector.value > parseInt(roomSizeSelector.getAttribute('max')))
+            roomSizeSelector.value = parseInt(roomSizeSelector.getAttribute('max'));
+    });
+
     // SAMPLE -> ?sijainti=1&huoneenKoko=1&startDate=1990-11-11&endDate=1990-12-12&sendSearch=Hae
     const urlSearch = window.location.search;
     if (urlSearch) crossSiteSearch(urlSearch);
