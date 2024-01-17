@@ -69,4 +69,5 @@ if (empty($availableRooms))
     exit(json_encode("No rooms found."));
 else
     echo (json_encode($availableRooms));
+
 ?>
