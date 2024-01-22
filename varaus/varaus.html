@@ -44,14 +44,6 @@
     </div>
   </nav>
 
-  <!--Banner kuva-->
-  <!--
-      <img src="https://www.scandichotels.fi/imageVault/publishedmedia/0cjjlzdqxeznp1cvgy99/scandic-aulanko-spa-pools-10.jpg" 
-    class="img-fluid"
-    alt="Image not found"
-    height="100%">
-  -->
-
   <div class="container-fluid p-0" id="mainContainer">
 
     <div id="searchResults" class="m-0" style="width: 100%;">
@@ -89,15 +81,16 @@
 
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <!--<i class=" fa fa-calendar-plus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
-              <input class="rounded-2" type="date" id="startDate" name="startDate" placeholder="Saapumis päivä"
-                dir="rtl" style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
+              <input class="dateSelector rounded-2" type="date" id="startDate" name="startDate"
+                placeholder="Saapumis päivä" dir="rtl"
+                style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
                 value="1990-01-01" required>
             </div>
 
             <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 2.25rem;">
               <!--<i class=" fa fa-calendar-minus-o" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i> -->
-              <input class="rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä" dir="rtl"
-                style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
+              <input class="dateSelector rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä"
+                dir="rtl" style="text-indent: 1.75em; height:100%; width:100%; direction: rtl; text-align: left;"
                 value="1991-01-01" required>
             </div>
 
@@ -122,65 +115,8 @@
       <div id="roomsContainer" class="container-lg p-0 m-0 m-lg-auto container-fluid"
         style="display:flex; flex-direction: column; height: 100%; align-items: center;">
 
-        <div id="displayRoomsAfter" style="display:none;"></div>
-
-        <!--HUONE-->
-        <!--<div class="room shadow row mb-5" style="width: 100%; ">
-
-          <div class="col-12 col-md-5 p-0"
-            style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
-          </div>
-
-          <div class="col-12 col-md-7 m-0 p-5 pt-4 pb-4 bg-white"
-            style="margin-right: 1em; display:flex; flex-direction: column;">
-
-            <h2 class="fw-bold">Superior Twin</h2>
-
-            <div class="pt-2" style="display:flex; gap: 1em;">
-
-              <div style="display:flex; gap: 0.5em;">
-                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
-                  <i class="fa fa-users" aria-hidden="true"></i>
-                </div>
-                <p class="text-secondary" style="vertical-align: middle;">1-2 henkilöä</p>
-              </div>
-
-              <div style="display:flex; gap: 0.5em;">
-                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
-                  <i class="fa fa-bed" aria-hidden="true"></i>
-                </div>
-                <p class="text-secondary" style="vertical-align: middle;">2 vuodetta</p>
-              </div>
-
-              <div style="display:flex; gap: 0.5em;">
-                <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
-                  <i class="fa fa-shower" aria-hidden="true"></i>
-                </div>
-                <p class="text-secondary" style="vertical-align: middle;">Sauna</p>
-              </div>
-            </div>
-
-            <p class="pt-2" style="flex-grow: 1;">
-              Superior Twin-huoneet erillisine vuoteineen sijaitsevat päärakennuksen ylimmissä kerroksissa.
-              Seinänlevyinen
-              ikkuna tuo
-              valoa huoneeseen ja voit katsella niistä maisemia ja lentokoneita. Näissä Energy-huoneissa sinua
-              hemmottelevat
-              kylpytakit ja -tossut sekä valikoima kylpyhuonetuotteita. Flamingo Spa Kylpylän liput myydään erikseen
-              vesipuiston
-              vastaanotosta.
-            </p>
-
-            <div class="pt-4" style="display:flex; justify-content: space-between;">
-              <p class="fs-4 p-0 m-0" style="">150€ </p>
-              <button class="btn btn-primary p-5 pt-0 pb-0" style="">Varaa</button>
-            </div>
-
-          </div>
-
-        </div>-->
-
       </div>
+
     </div>
   </div>
 
@@ -253,13 +189,13 @@
     <div id="room{{id}}" class="room shadow row mb-5 fadeIn" style="width: 100%; ">
 
       <div class="col-12 col-md-5 p-0"
-        style="background-image: url(../media/room1.png); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
+        style="background-image: url(../media/{{kuva}}.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 20em;">
       </div>
 
       <div class="col-12 col-md-7 m-0 p-5 pt-4 pb-4 bg-white"
         style="margin-right: 1em; display:flex; flex-direction: column;">
 
-        <h2 class="fw-bold">Superior Twin</h2>
+        <h2 class="fw-bold">{{nimi}}</h2>
 
         <div class="pt-2" style="display:flex; gap: 1em;">
 
@@ -267,14 +203,14 @@
             <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
               <i class="fa fa-users" aria-hidden="true"></i>
             </div>
-            <p class="text-secondary" style="vertical-align: middle;">1-{{vuodepaikat}} henkilöä</p>
+            <p class="text-secondary" style="vertical-align: middle;">1-{{vuodepaikat}} Henkilöä</p>
           </div>
 
           <div style="display:flex; gap: 0.5em;">
             <div style="display:flex; justify-content: center; flex-direction: column; height:60%;">
               <i class="fa fa-bed" aria-hidden="true"></i>
             </div>
-            <p class="text-secondary" style="vertical-align: middle;">2 vuodetta</p>
+            <p class="text-secondary" style="vertical-align: middle;">{{vuodepaikat}} Vuodetta</p>
           </div>
 
           <div style="display:flex; gap: 0.5em;">
@@ -286,19 +222,11 @@
         </div>
 
         <p class="pt-2" style="flex-grow: 1;">
-          <!--<p class="fw-bold mb-2 p-0">Superior Twin</p>-->
-          Superior Twin-huoneet erillisine vuoteineen sijaitsevat päärakennuksen ylimmissä kerroksissa.
-          Seinänlevyinen
-          ikkuna tuo
-          valoa huoneeseen ja voit katsella niistä maisemia ja lentokoneita. Näissä Energy-huoneissa sinua
-          hemmottelevat
-          kylpytakit ja -tossut sekä valikoima kylpyhuonetuotteita. Flamingo Spa Kylpylän liput myydään erikseen
-          vesipuiston
-          vastaanotosta.
+          {{kuvaus}}
         </p>
 
         <div class="pt-4" style="display:flex; justify-content: space-between;">
-          <p class="fs-4 p-0 m-0" style="">150€ </p>
+          <p class="fs-4 p-0 m-0" style="">{{hinta}}€ / Yö</p>
           <button class="btn btn-primary p-5 pt-0 pb-0" style="">Varaa</button>
         </div>
 
