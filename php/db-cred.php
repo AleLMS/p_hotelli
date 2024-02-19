@@ -1,4 +1,5 @@
 <?php
 define("SERVER", "localhost");
-define("USERNAME", "root");
-define("PASSWORD", "");
+define("USERNAME", "user");
+define("PASSWORD", "ps");
+define("DB", "db");

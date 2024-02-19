@@ -22,7 +22,7 @@ function validate_input($input)
 function get_available_rooms($hotel, $size, $startDate, $endDate)
 {
     // connect to DB
-    $db = connect_to_db("p_hotelli_test");
+    $db = connect_to_db(DB);
 
     // query DB
     $stmt = $db->prepare('SELECT * FROM huoneet 

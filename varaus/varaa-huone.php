@@ -22,7 +22,7 @@ function validate_input($input)
 
 function upload_varaus($huodeID, $asiakasID, $alkuPvm, $loppuPvm)
 {
-    $conn = connect_to_db("p_hotelli_test");
+    $conn = connect_to_db(DB);
     $stmt = $conn->prepare("INSERT INTO huoneidenvaraukset (huone_ID, asiakas_ID, alku_pvm, loppu_pvm) VALUES (?, ?, ?, ?);");
     $stmt->bind_param("iiss", $huodeID, $asiakasID, $alkuPvm, $loppuPvm);
     $stmt->execute();
@@ -33,7 +33,7 @@ function upload_varaus($huodeID, $asiakasID, $alkuPvm, $loppuPvm)
 function confirm_available($id, $start, $end)
 {
     // connect to DB
-    $db = connect_to_db("p_hotelli_test");
+    $db = connect_to_db(DB);
 
     // query DB
     $stmt = $db->prepare('SELECT * FROM huoneet 
@@ -58,7 +58,7 @@ function confirm_available($id, $start, $end)
 function check_customer($sposti)
 {
     // connect to DB
-    $db = connect_to_db("p_hotelli_test");
+    $db = connect_to_db(DB);
 
     // query DB
     $stmt = $db->prepare('SELECT * FROM asiakkaat WHERE sposti = ?;');
@@ -85,7 +85,7 @@ function check_customer($sposti)
 function upload_customer($etunimi, $sukunimi, $sposti, $puhelin)
 {
     // connect to DB
-    $db = connect_to_db("p_hotelli_test");
+    $db = connect_to_db(DB);
 
     // query DB
     $stmt = $db->prepare('INSERT INTO asiakkaat (etunimi, sukunimi, sposti, puhelin) VALUES (?, ?, ?, ?)');
