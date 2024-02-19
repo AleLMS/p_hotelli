@@ -17,8 +17,9 @@
         <?php
 
         //Create connection
-            require 'settings.php';
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            include_once("../php/db-cred.php");
+        
+            $conn = new mysqli(SERVER, USERNAME, PASSWORD, DB);
             
             $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 3");
                    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
