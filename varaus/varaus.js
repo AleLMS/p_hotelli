@@ -1,7 +1,16 @@
 import { Room } from "./huone.js";
 
+const bookButton = document.getElementById('bookRoom');
+bookButton.addEventListener('click', (e) => {
+    document.getElementById("fs-content").innerHTML = document.getElementById('varaus-step1').innerHTML;
+    bookButton.style.display = "none";
+});
+
+var selectedRoom = [];
+
 // Document ready
 window.addEventListener('load', function () {
+
     dateEvents();
 
     // Limit room size selection
@@ -36,6 +45,13 @@ window.addEventListener('load', function () {
 
 // Functions
 function ajaxSearch(location, roomSize, startDate, endDate) {
+    rooms = [];
+    // store for later
+    selectedRoom['location'] = location;
+    selectedRoom['roomSize'] = roomSize;
+    selectedRoom['startDate'] = startDate;
+    selectedRoom['endDate'] = endDate;
+
     const ajax = new XMLHttpRequest();
 
     ajax.open('POST', 'etsi-huone.php', true);
@@ -47,8 +63,8 @@ function ajaxSearch(location, roomSize, startDate, endDate) {
             if (results != "No rooms found.") {
                 await results.forEach((room) => addNewRoom(room));
             }
-
             updateResultText();
+            addEventListeners();
         } else {
             throw new Error(ajax.status + ":" + ajax.responseText + " | Bad request.");
         }
@@ -133,13 +149,164 @@ function checkDates() {
 
 }
 
+var rooms = [];
 async function addNewRoom(input) {
     const room = new Room(input);
-
+    rooms.push(room);
     const parent = document.getElementById('roomsContainer');
     room.displayAsChild(parent, 'roomTemplate');
 
-    //let entryPoint = document.getElementById('displayRoomsAfter');
-    //room.displayBefore(entryPoint, 'roomTemplate');
+}
 
+function addEventListeners(element) {
+    let a = Array.from(document.getElementsByClassName("varaa"));
+    a.forEach(function (e) {
+        e.addEventListener("click", function () {
+            startBooking(e);
+        });
+    });
+}
+
+function startBooking(huoneID) {
+    selectedRoom['huone-id'] = huoneID.value;
+    console.log(selectedRoom);
+
+    document.getElementById("fs-content").innerHTML = document.getElementById('varaus-step1').innerHTML;
+
+    // Show form
+    const form = document.getElementById('bookRoom');
+    form.style.display = "flex";
+
+    // Cancel button
+    const cancel = document.getElementById('cancelBooking');
+    cancel.addEventListener("click", (e) => {
+        document.getElementById("fs-content").innerHTML = document.getElementById('varaus-step1').innerHTML;
+        form.style.display = "none";
+    }, { once: true });
+
+    // Next button
+    const next = document.getElementById('next');
+    next.addEventListener("click", nextEvent, { once: true })
+}
+
+function nextEvent() {
+    let formElements = [document.getElementById('firstname'), document.getElementById('lastname'),
+    document.getElementById('email'), document.getElementById('phone')];
+    if (checkFormEmpty(formElements)) {
+        const next = document.getElementById('next');
+        next.addEventListener("click", nextEvent, { once: true })
+    } else {
+        bookingSummary();
+    }
+
+}
+
+function checkFormEmpty(elements) {
+    let error = false;
+    elements.forEach((e) => {
+        if (e.value === "") {
+            e.style.borderColor = "red";
+            error = true;
+        }
+    })
+    return error;
+}
+
+function bookingSummary() {
+    let room = rooms.find((r) => Number(r.huone_ID) === Number(selectedRoom['huone-id']));
+    console.log(room);
+    // parse previous form, foreach variable replace in template 😴 . . .
+    var results = [];
+    let forms = document.forms['tiedotForm'];
+    for (let i = 0; i < forms.length; i++) {
+        results[forms[i].name] = forms[i].value;
+    }
+
+    let etunimi = forms['etunimi'].value;
+    let sukunimi = forms['sukunimi'].value;
+    let puhelin = forms['puhelin'].value;
+    let sposti = forms['sposti'].value;
+    let hotel = room['hotelli_ID'];
+    let huoneID = room['huone_ID'];
+    let size = room['vuodepaikat'];
+    let enterDate = selectedRoom['startDate'];
+    let exitDate = selectedRoom['endDate'];
+    let price = room['hinta'];
+    let roomName = room['nimi'];
+    let kuva = room['kuva'];
+
+    const orderData = new OrderData(etunimi, sukunimi, puhelin, sposti, hotel, huoneID, size, enterDate, exitDate, price, roomName, kuva);
+
+    // Next page
+    let template = document.getElementById("yhteenveto").innerHTML;
+    const container = document.getElementById("formCont");
+
+    for (const [key, value] of Object.entries(orderData)) {
+        const replace = "{{" + key + "}}";
+        console.log(key + " | " + value);
+        template = template.replaceAll(replace, value);
+    }
+    container.innerHTML = template;
+
+    // Confirm order button
+    const next = document.getElementById('next');
+    next.innerHTML = "Tee varaus"
+    next.addEventListener("click", (e) => {
+        console.log("lähetä varaus!");
+        AjaxUpload(orderData, container);
+    }, { once: true })
+    // Ajax, upload booking into database, do error and confirm messages 😿 . . .
+
+}
+
+function AjaxUpload(data, container) {
+    const ajax = new XMLHttpRequest();
+
+    ajax.open('POST', 'varaa-huone.php', true);
+
+    ajax.onload = async () => {
+        if (ajax.status === 200) {
+            console.log(ajax.responseText);
+            container.innerHTML = "Success";
+            document.getElementById('next').remove();
+            document.getElementById('cancelBooking').innerHTML = "Sulje";
+        } else {
+            let results = ajax.responseText;
+            let code = ajax.status;
+            console.log(results + " | " + code);
+            container.innerHTML = "Error: " + results;
+        }
+    }
+
+    // Send JSON
+    const jData = {
+        etunimi: data['etunimi'],
+        sukunimi: data['sukunimi'],
+        huoneID: data['huoneID'],
+        enterDate: data['enterDate'],
+        exitDate: data['exitDate'],
+        sposti: data['sposti'],
+        puhelin: data['puhelin']
+    }
+
+    // Send JSON
+    const jsonData = JSON.stringify(jData);
+    ajax.send(jsonData);
+}
+
+class OrderData {
+    constructor(etunimi, sukunimi, puhelin, sposti, hotel, huoneID, size, enterDate, exitDate, price, roomName, kuva) {
+        this.etunimi = etunimi;
+        this.sukunimi = sukunimi;
+        this.puhelin = puhelin;
+        this.sposti = sposti;
+        this.hotel = hotel;
+        this.huoneID = huoneID;
+        this.size = size;
+        this.enterDate = enterDate;
+        this.exitDate = exitDate;
+        this.price = price;
+        this.roomName = roomName;
+        this.kuva = kuva;
+    }
 }

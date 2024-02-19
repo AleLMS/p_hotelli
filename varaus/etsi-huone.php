@@ -11,6 +11,14 @@ function connect_to_db($databaseName)
     return $conn;
 }
 
+function validate_input($input)
+{
+    $str = htmlspecialchars(stripslashes(trim($input)));
+    $str = str_replace("/", "", $str);
+    $str = str_replace("\\", "", $str);
+    return $str;
+}
+
 function get_available_rooms($hotel, $size, $startDate, $endDate)
 {
     // connect to DB
@@ -54,12 +62,17 @@ function get_available_rooms($hotel, $size, $startDate, $endDate)
 $searchData = json_decode(file_get_contents("php://input"), true);
 
 if (empty($searchData)) exit(json_encode("Empty input."));
+if (
+    !isset($searchData['location']) || !isset($searchData['roomSize'])
+    || !isset($searchData['startDate']) || !isset($searchData['endDate'])
+)
+    exit(json_encode('Incorrect input!'));
 
 // Bind data
-$hotel = $searchData['location'];
-$size = $searchData['roomSize'];
-$startDate = $searchData['startDate'];
-$endDate = $searchData['endDate'];
+$hotel = validate_input($searchData['location']);
+$size = validate_input($searchData['roomSize']);
+$startDate = validate_input($searchData['startDate']);
+$endDate = validate_input($searchData['endDate']);
 
 // Get rooms based on data
 $availableRooms = get_available_rooms((int)$hotel, (int)$size, $startDate, $endDate);
