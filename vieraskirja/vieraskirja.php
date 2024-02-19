@@ -98,7 +98,7 @@
          
             <div class="row" style="height: 7svh;"></div> <!-- spacer -->
             <div class="form container">
-            <h4 class="h4 text-white mb-4" style="text-shadow: 1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">Kirjoita vieraskirjaan kokemuksestasi hotellissamme täyttämällä alla oleva lomake. Voit arvioida kokemuksesi päärynöillä.</h4>
+            <h4 class="h4 text-white mb-4 rounded-2" style="text-shadow: 1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px; background-color: white; border-radius: 5px; opacity: 0.7">Kirjoita vieraskirjaan kokemuksestasi hotellissamme täyttämällä alla oleva lomake. Voit arvioida kokemuksesi päärynöillä.</h4>
                <!-- form   -->
                 <form id="lomake" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       
