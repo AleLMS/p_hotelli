@@ -5,7 +5,6 @@ function connect_to_db($databaseName)
 {
     $conn = new mysqli(SERVER, USERNAME, PASSWORD, $databaseName);
     if ($conn->connect_error) {
-        http_response_code(400);
         die("connection failed! " . $conn->connect_error);
     }
 
@@ -96,34 +95,55 @@ function upload_customer($etunimi, $sukunimi, $sposti, $puhelin)
 
 // MAIN
 // Get data
-$varaus = json_decode(file_get_contents("php://input"), true);
 
-// Assign data to variables
-$etunimi = $varaus['etunimi'];
-$sukunimi = $varaus['sukunimi'];
-$puhelin = $varaus['puhelin'];
-$sposti = $varaus['sposti'];
+try {
+    $varaus = json_decode(file_get_contents("php://input"), true);
+} catch (Exception $e) {
+    http_response_code(400);
+    exit($e);
+}
 
-$huoneID = $varaus['huoneID'];
-$start = $varaus['enterDate'];
-$end = $varaus['exitDate'];
+try {
+    // Assign data to variables
+    $etunimi = $varaus['etunimi'];
+    $sukunimi = $varaus['sukunimi'];
+    $puhelin = $varaus['puhelin'];
+    $sposti = $varaus['sposti'];
+
+    $huoneID = $varaus['huoneID'];
+    $start = $varaus['enterDate'];
+    $end = $varaus['exitDate'];
+} catch (Exception $e) {
+    http_response_code(400);
+    exit($e);
+}
 
 // Does customer exist
-$asiakasID = check_customer($sposti);
-if ($asiakasID == null) {
-    upload_customer($etunimi, $sukunimi, $sposti, $puhelin);
+try {
     $asiakasID = check_customer($sposti);
-}
-if ($asiakasID == null) {
+    if ($asiakasID == null) {
+        upload_customer($etunimi, $sukunimi, $sposti, $puhelin);
+        $asiakasID = check_customer($sposti);
+    }
+    if ($asiakasID == null) {
+        http_response_code(400);
+        exit(json_encode(":("));
+    }
+} catch (Exception $e) {
     http_response_code(400);
-    exit(json_encode(":("));
+    exit($e);
 }
 
 // Send data
-if (confirm_available($huoneID, $start, $end)) {
-    upload_varaus($huoneID, $asiakasID, $start, $end);
-    exit(json_encode("Doneds."));
-} else {
+try {
+    if (confirm_available($huoneID, $start, $end)) {
+        upload_varaus($huoneID, $asiakasID, $start, $end);
+        exit(json_encode("Doneds."));
+    } else {
+        http_response_code(400);
+        exit(json_encode("Room unavailable"));
+    }
+} catch (Exception $e) {
     http_response_code(400);
-    exit(json_encode("Room unavailable"));
+    exit($e);
 }
