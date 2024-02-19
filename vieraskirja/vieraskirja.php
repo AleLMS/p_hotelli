@@ -17,7 +17,7 @@
     <?php
 
     //Create connection
-    include_once("php/db-cred.php");
+    include_once("../php/db-cred.php");
         
     $conn = new mysqli(SERVER, USERNAME, PASSWORD, DB);
     $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
