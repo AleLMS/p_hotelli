@@ -267,14 +267,14 @@ function AjaxUpload(data, container) {
     ajax.onload = async () => {
         if (ajax.status === 200) {
             console.log(ajax.responseText);
-            container.innerHTML = "Success";
+            container.innerHTML = "Huone varattu!";
             document.getElementById('next').remove();
             document.getElementById('cancelBooking').innerHTML = "Sulje";
         } else {
             let results = ajax.responseText;
             let code = ajax.status;
             console.log(results + " | " + code);
-            container.innerHTML = "Error: " + results;
+            container.innerHTML = "Huoneen varaaminen epäonnistui, virhe: " + results;
         }
     }
 
