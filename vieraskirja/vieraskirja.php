@@ -15,8 +15,6 @@
 </head>
 
 <body>
-  <button onclick="toTheTop();" id="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
-
   <?php
 
   //Create connection
@@ -55,8 +53,8 @@
       <!--Large/Desktop-->
       <ul class="navbar-nav d-none d-sm-flex" style="display:flex; justify-content: space-between; flex-direction: row; width: 100%;">
         <div style="display:flex; flex-direction: row;">
-          <li class="nav-item topimg hidden-xs hidden-sm">
-            <a class="nav-link" aria-current="page" href="../index.php"><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+          <li class="nav-item topimg">
+            <a class="nav-link" aria-current="page" href="../index.php"><img class="d-none d-lg-block" src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
           </li>
         </div>
         <div class="" style="display:flex; flex-direction: row; align-items: center;">
@@ -105,7 +103,7 @@
         background-repeat: no-repeat; background-size: cover; position: relative;">
     <h1 class="h1 pt-5 mx-auto text-center" style="font-size: min(8svh, 8svw); color: #ffffff;text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px; margin-bottom:15px;">Vieraskirja</h1>
 
-    <div class="msgcontainer container mt-5 pb-5 pt-5 rounded-2" style="background-color: white; border-radius: 5px; opacity: 0.8"><?php foreach ($messages as $message) : ?>
+    <div class="msgcontainer container mt-5 pb-5 pt-5 rounded-2" style="background-color: white; border-radius: 5px; opacity: 0.8; overflow: scroll;"><?php foreach ($messages as $message) : ?>
         <div class="msgarea row mb-4" style="">
           <div class="time col-6 col-sm-6 col-lg-3 col-md-3">
             <p><b><?php echo $message['aika']; ?></b></p>
@@ -118,8 +116,8 @@
           </div>
           <div class="pears col-12 col-xs-6 col-sm-6 col-lg-2 col-md-3">
             <p><?php for ($i = 1; $i <= $message['arvio']; $i++) {
-                                                                                                                                        echo '<img src="../media/paaryna.png" width="30px" height="30px">';
-                                                                                                                                      } ?></p>
+                                                                                                                                                          echo '<img src="../media/paaryna.png" width="30px" height="30px">';
+                                                                                                                                                        } ?></p>
           </div>
         </div><?php endforeach; ?>
     </div>

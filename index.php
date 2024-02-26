@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item topimg">
-                    <a class="nav-link" aria-current="page" href=""><img src="media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+                    <a class="nav-link" aria-current="page" href=""><img class="d-none d-lg-block" src="media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
                 </li>
             </ul>
         </div>
