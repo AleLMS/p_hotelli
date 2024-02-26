@@ -1,5 +1,5 @@
 <?php
 define("SERVER", "localhost");
-define("USERNAME", "user");
-define("PASSWORD", "ps");
-define("DB", "db");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DB", "p_hotelli_test");

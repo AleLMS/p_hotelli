@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand Medium">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
     <script src="https://kit.fontawesome.com/541d399fb7.js" crossorigin="anonymous"></script>
 
 </head>
@@ -88,10 +88,10 @@
                 <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 7.25rem;">
                     <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
                     <select class="rounded-2" type="text" id="sijainti" name="sijainti" placeholder="Sijainti" style="text-indent: 0.70em;  width:100%; height: 33%;" value="1" required>
-                        <option value="1">{PH}Hotel 1</option>
-                        <option value="2">{PH}Hotel 2</option>
-                        <option value="3">{PH}Hotel 3</option>
-                        <option value="4">{PH}Hotel 4</option>
+                        <option value="1">Helsinki</option>
+                        <option value="2">Tampere</option>
+                        <option value="3">Oulu</option>
+                        <option value="4">Turku</option>
                     </select>
                 </div>
 

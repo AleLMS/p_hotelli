@@ -1,53 +1,48 @@
 * {
   font-family: Quicksand Medium;
 }
+
 @font-face {
-    font-family: Qilka Bold;
-    src: url(../media/qilka.bold.otf);
-    font-weight: bold;
-  }
+  font-family: Qilka Bold;
+  src: url(../media/qilka.bold.otf);
+  font-weight: bold;
+}
 
-input[type=submit] {
-  background-color: #9cda71;
-  color: white;
-  padding: 7px 10px;
-  margin: 70px 10px 0 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+a {
+  text-decoration: none;
+}
 
-  }
-  a {
-      text-decoration: none;
-  }
-  #bgImg {
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-     
-      }    
+#bgImg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+
 .banner {
-    font-size: 8em;
-    line-height: 1em;
-    font-weight: 900;
-    color: white;
-    position:absolute;
-    padding: 24px 24px ;
-    font-family: Quicksand Medium;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
-    top:40%;
-    left:10%;
-    
-    
-  }
-  .banner .h1 {
+  font-size: 8em;
+  line-height: 1em;
+  font-weight: 900;
+  color: white;
+  position: absolute;
+  padding: 24px 24px;
+  font-family: Quicksand Medium;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
+  top: 40%;
+  left: 10%;
+
+
+}
+
+.banner .h1 {
   text-wrap: balance;
   font-family: Qilka Bold;
   color: white;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, .5);
   font-size: 50px;
-  }
-  .banner .h3 {
-    font-family: Quicksand Medium;
-    color: white;
-  }
+}
+
+.banner .h3 {
+  font-family: Quicksand Medium;
+  color: white;
+}
