@@ -15,8 +15,6 @@
 </head>
 
 <body>
-  <button onclick="toTheTop();" id="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
-
   <?php
 
   //Create connection
@@ -27,20 +25,28 @@
   $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-  if (isset($_POST["submit"])) {
-    $nimi = $_POST["name"];
-    $viesti = $_POST["message"];
-    $aika = date("Y-m-d");
-    $arvio = $_POST["arvio"];
+  try {
+    if (isset($_POST["submit"])) {
+      $nimi = $_POST["name"];
+      $viesti = $_POST["message"];
+      $aika = date("Y-m-d");
+      $arvio = $_POST["arvio"];
 
-    $sql = "INSERT INTO messages (nimi, viesti, aika, arvio) VALUES ('$nimi', '$viesti', '$aika', '$arvio')";
-    if ($conn->query($sql) === TRUE) {
-      $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
-      $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    } else {
-      echo "virhe";
+
+      $sql = "INSERT INTO messages (nimi, viesti, aika, arvio) VALUES ('$nimi', '$viesti', '$aika', '$arvio')";
+      if ($conn->query($sql) === TRUE) {
+        $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
+        $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+      } else {
+        echo "virhe";
+      }
     }
+  } catch (Exception $e) {
+    http_response_code(400);
+    exit($e);
   }
+
+
 
 
   $conn->close();
@@ -55,8 +61,8 @@
       <!--Large/Desktop-->
       <ul class="navbar-nav d-none d-sm-flex" style="display:flex; justify-content: space-between; flex-direction: row; width: 100%;">
         <div style="display:flex; flex-direction: row;">
-          <li class="nav-item topimg hidden-xs hidden-sm">
-            <a class="nav-link" aria-current="page" href="../index.php"><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+          <li class="nav-item topimg">
+            <a class="nav-link" aria-current="page" href="../index.php"><img class="d-none d-lg-block" src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
           </li>
         </div>
         <div class="" style="display:flex; flex-direction: row; align-items: center;">
@@ -105,7 +111,7 @@
         background-repeat: no-repeat; background-size: cover; position: relative;">
     <h1 class="h1 pt-5 mx-auto text-center" style="font-size: min(8svh, 8svw); color: #ffffff;text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px; margin-bottom:15px;">Vieraskirja</h1>
 
-    <div class="msgcontainer container mt-5 pb-5 pt-5 rounded-2" style="background-color: white; border-radius: 5px; opacity: 0.8"><?php foreach ($messages as $message) : ?>
+    <div class="msgcontainer container mt-5 pb-5 pt-5 rounded-2" style="background-color: white; border-radius: 5px; opacity: 0.8; overflow: scroll;"><?php foreach ($messages as $message) : ?>
         <div class="msgarea row mb-4" style="">
           <div class="time col-6 col-sm-6 col-lg-3 col-md-3">
             <p><b><?php echo $message['aika']; ?></b></p>
@@ -118,8 +124,8 @@
           </div>
           <div class="pears col-12 col-xs-6 col-sm-6 col-lg-2 col-md-3">
             <p><?php for ($i = 1; $i <= $message['arvio']; $i++) {
-                                                                                                                                        echo '<img src="../media/paaryna.png" width="30px" height="30px">';
-                                                                                                                                      } ?></p>
+                                                                                                                                                          echo '<img src="../media/paaryna.png" width="30px" height="30px">';
+                                                                                                                                                        } ?></p>
           </div>
         </div><?php endforeach; ?>
     </div>
@@ -131,9 +137,11 @@
       <form id="lomake" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
         <div class="row mt-3 text-center" id="input">
-          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name">
+          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
+            <input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name" required>
           </div>
-          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message">
+          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
+            <input class="form-control form-control-lg" id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message" required>
           </div>
           <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4 rating">
             <button type="button" class="btn paarynat " onclick="rating(1);" id="paaryna1"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p1"></button>
@@ -141,7 +149,7 @@
             <button type="button" class="btn paarynat" onclick="rating(3);" id="paaryna3"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p3"></button>
             <button type="button" class="btn paarynat" onclick="rating(4);" id="paaryna4"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p4"></button>
             <button type="button" class="btn paarynat" onclick="rating(5);" id="paaryna5"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p5"></button>
-            <input type="hidden" name="arvio" id="arvio">
+            <input type="hidden" name="arvio" id="arvio" value="5">
           </div>
           <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4"><input id="sendMsg" class="form-control form-control-lg" type="submit" name="submit"></div>
         </div>

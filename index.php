@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item topimg">
-                    <a class="nav-link" aria-current="page" href=""><img src="media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+                    <a class="nav-link" aria-current="page" href=""><img class="d-none d-lg-block" src="media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
                 </li>
             </ul>
         </div>
@@ -78,16 +78,15 @@
 
     <div id="mainContainer">
 
-
         <!-- Huoneiden haku -->
         <div class="p-5 container-fluid container-lg">
-            <form id="searchForm" name="searchForm" class=" rounded-2 p-2 pt-md-4 pb-md-4 m-0 row" style=" background-color: #9cda71;" method="get" action="varaus/varaus.html">
-                <p class="h3 text-center pt-2 pb-2" style="">Hae majoitusta</p>
+            <form id="searchForm" name="searchForm" class=" rounded-2 p-5 m-0 row" style=" background-color: #9cda71;" method="get" action="varaus/varaus.html">
+                <p class="h3 text-center pb-4" style="">Hae majoitusta</p>
                 <div class="col-1 d-none d-lg-block" style="">
                 </div>
-                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 7.25rem;">
+                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="">
                     <i class=" fa fa-map-marker" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-                    <select class="rounded-2" type="text" id="sijainti" name="sijainti" placeholder="Sijainti" style="text-indent: 0.70em;  width:100%; height: 33%;" value="1" required>
+                    <select class="rounded-2" type="text" id="sijainti" name="sijainti" placeholder="Sijainti" style="text-indent: 0.70em;  width:100%; height: 100%;" value="1" required>
                         <option value="1">Helsinki</option>
                         <option value="2">Tampere</option>
                         <option value="3">Oulu</option>
@@ -95,17 +94,17 @@
                     </select>
                 </div>
 
-                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 7.25rem;">
+                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="">
                     <i class=" fa fa-user-plus" style="position:absolute; margin-left: .65em; margin-top: .7em;"></i>
-                    <input class="rounded-2" type="number" min="1" max="6" id="huoneenKoko" name="huoneenKoko" placeholder="Huoneen koko" style="text-indent: 1.75em;  width:100%; height: 33%;" value="1" required>
+                    <input class="rounded-2" type="number" min="1" max="6" id="huoneenKoko" name="huoneenKoko" placeholder="Huoneen koko" style="text-indent: 1.75em;  width:100%; height: 100%;" value="1" required>
                 </div>
 
-                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 7.25rem;">
-                    <input class="dateSelector rounded-2" type="date" id="startDate" name="startDate" placeholder="Saapumis päivä" dir="rtl" style="text-indent: 1.75em;  width:100%; height: 33%; direction: rtl; text-align: left;" required>
+                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="">
+                    <input class="dateSelector rounded-2" type="date" id="startDate" name="startDate" placeholder="Saapumis päivä" dir="rtl" style="text-indent: 1.75em;  width:100%; height: 100%; direction: rtl; text-align: left;" required>
                 </div>
 
-                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="min-height: 7.25rem;">
-                    <input class="dateSelector rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä" dir="rtl" style="text-indent: 1.75em;  width:100%; height: 33%; direction: rtl; text-align: left;" required>
+                <div class="col-6 col-md-3 col-lg-2 mb-2 m-md-0" style="">
+                    <input class="dateSelector rounded-2" type="date" id="endDate" name="endDate" placeholder="Lähtö päivä" dir="rtl" style="text-indent: 1.75em;  width:100%; height: 100%; direction: rtl; text-align: left;" required>
                 </div>
 
                 <div class="col-12 col-lg-2 mt-0 mt-md-2 mt-lg-0" style="">
