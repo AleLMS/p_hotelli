@@ -78,7 +78,6 @@
 
     <div id="mainContainer">
 
-
         <!-- Huoneiden haku -->
         <div class="p-5 container-fluid container-lg">
             <form id="searchForm" name="searchForm" class=" rounded-2 p-5 m-0 row" style=" background-color: #9cda71;" method="get" action="varaus/varaus.html">

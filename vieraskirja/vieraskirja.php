@@ -25,20 +25,28 @@
   $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-  if (isset($_POST["submit"])) {
-    $nimi = $_POST["name"];
-    $viesti = $_POST["message"];
-    $aika = date("Y-m-d");
-    $arvio = $_POST["arvio"];
+  try {
+    if (isset($_POST["submit"])) {
+      $nimi = $_POST["name"];
+      $viesti = $_POST["message"];
+      $aika = date("Y-m-d");
+      $arvio = $_POST["arvio"];
 
-    $sql = "INSERT INTO messages (nimi, viesti, aika, arvio) VALUES ('$nimi', '$viesti', '$aika', '$arvio')";
-    if ($conn->query($sql) === TRUE) {
-      $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
-      $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    } else {
-      echo "virhe";
+
+      $sql = "INSERT INTO messages (nimi, viesti, aika, arvio) VALUES ('$nimi', '$viesti', '$aika', '$arvio')";
+      if ($conn->query($sql) === TRUE) {
+        $result = mysqli_query($conn, "SELECT * FROM messages ORDER BY id DESC limit 5");
+        $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+      } else {
+        echo "virhe";
+      }
     }
+  } catch (Exception $e) {
+    http_response_code(400);
+    exit($e);
   }
+
+
 
 
   $conn->close();
@@ -129,9 +137,11 @@
       <form id="lomake" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
         <div class="row mt-3 text-center" id="input">
-          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name">
+          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
+            <input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name" required>
           </div>
-          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message">
+          <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4">
+            <input class="form-control form-control-lg" id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message" required>
           </div>
           <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4 rating">
             <button type="button" class="btn paarynat " onclick="rating(1);" id="paaryna1"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p1"></button>
@@ -139,7 +149,7 @@
             <button type="button" class="btn paarynat" onclick="rating(3);" id="paaryna3"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p3"></button>
             <button type="button" class="btn paarynat" onclick="rating(4);" id="paaryna4"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p4"></button>
             <button type="button" class="btn paarynat" onclick="rating(5);" id="paaryna5"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p5"></button>
-            <input type="hidden" name="arvio" id="arvio">
+            <input type="hidden" name="arvio" id="arvio" value="5">
           </div>
           <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4"><input id="sendMsg" class="form-control form-control-lg" type="submit" name="submit"></div>
         </div>
