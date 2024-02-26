@@ -1,83 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Päärynä hotellit</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand Medium">
-        <script src="https://kit.fontawesome.com/541d399fb7.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="yhteys.css">
-    </head>
-    <body>
-        <!--Navbar-->
-      <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: #9cda71; padding: 0.75em; font-size: 1.2em;">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+
+<head>
+    <title>Päärynä hotellit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand Medium">
+    <script src="https://kit.fontawesome.com/541d399fb7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="yhteys.css">
+</head>
+
+<body>
+    <button onclick="toTheTop();" id="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top"
+        style="padding: 0,5em;  font-size: 1.4em; position: fixed; width: 100%;" id="nav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-    
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
-              <li class="nav-item topimg hidden-xs hidden-sm">
-                <a class="nav-link" aria-current="page" href="../index.php"><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a></li>
-              <li class="nav-item mt-2">
-                <a class="nav-link active" aria-current="page" href="../index.php">Etusivu</a></li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" href="../galleria/gallery.html">Galleria</a></li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" href="../vieraskirja/vieraskirja.html">Vieraskirja</a></li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" href="../yhteys/yhteystiedot.php">Yhteystiedot</a></li>
-                <li class="nav-item hidden-xs hidden-sm">
-                  <a class="nav-link active" href="../varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit" ></a>
+                <li class="nav-item topimg">
+                    <a class="nav-link" aria-current="page" href=""><img src="../media/logo2.png"
+                            style="width: 450px; height: 50px;" alt="Image not found"></a>
+                </li>
+        </div>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav" style="text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">
+                <li class="nav-item mt-2">
+                    <a class="nav-link active" aria-current="page" href="#">Etusivu</a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link active" href="galleria/gallery.html">Galleria</a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link active" href="vieraskirja/vieraskirja.php">Vieraskirja</a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link active" href="yhteys/yhteystiedot.html">Yhteystiedot</a>
+                </li>
+                <li>
+                    <a class="nav-link active" href="varaus/varaus.html"><input class="form-control form-control-lg"
+                            value="Varaa tästä" type="submit" name="submit"></a>
                 </li>
             </ul>
-          </div>
+        </div>
     </nav>
-   
-    <div style="background-image: url('../media/hotellcar.png'); max-height: 1080px; height: 75svh; margin: 0;"
-    class="container-fluid p-0 " class="img-fluid" id="bgImg">
-    <div class="container-fluid" style="height: 100%; box-shadow: inset 0 -10px 10px -10px rgba(19, 19, 19, 0.13);">
-        <div class="banner col-md-6" style="text-shadow: 1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">
-            <h1 class="h1">Yhteystiedot</h1>
-            <h3  class="h3 mt-4 ">Löydät päärynähotellin 4:ltä paikkakunnalta. Hotellit sijaitsevat kaupunkien keskustoissa hyvien kulkuyhteyksien varrella.
-            </h3>
+
+    <div style="background-image: url('../media/HotelExpensive5.jpg'); max-height: 1080px; height: 90svh; margin: 0;"
+        class="container-fluid p-0 " class="img-fluid" id="bgImg">
+        <div class="container-fluid" style="height: 100%; ">
+            <div class="banner col-md-6" style="text-shadow: 1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">
+                <h1 class="h1">Yhteystiedot</h1>
+                <h3 class="h3 mt-4 ">Löydät päärynähotellin 4:ltä paikkakunnalta. Hotellit sijaitsevat kaupunkien
+                    keskustoissa hyvien kulkuyhteyksien varrella.</h3>
+            </div>
         </div>
     </div>
-  </div>
 
 
-  <!--select hotel-->
-  <div class="d-flex justify-content-center mb-4 mt-4">
-    <div class="p-2">
-        <h2>Hotellimme</h2>
+    <!--select hotel-->
+    <div class="d-flex justify-content-center mb-4 mt-4">
+        <div class="p-2">
+            <h2>Hotellimme</h2>
+        </div>
+        <div class="p-2">
+            <div class="dropdown">
+                <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                    style="background-color: #9cda71; color: #ffffff;">Valitse hotelli</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#Helsinki">Helsinki</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#Tampere">Tampere</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#Oulu">Oulu</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#Turku">Turku</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="p-2">
-        <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" style="background-color: #9cda71; color: #ffffff;">
-                Valitse hotelli
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#Helsinki">Helsinki</a></li>
-              <li><a class="dropdown-item" href="#Tampere">Tampere</a></li>
-              <li><a class="dropdown-item" href="#Oulu">Oulu</a></li>
-              <li><a class="dropdown-item" href="#Turku">Turku</a></li>
-            </ul>
-          </div>
-    </div>
-  </div>
-  
-  <div class="" style="height: 5svw;">
 
-  </div>
-  
-<!--hotels section-->
-  <div class="container text-center text-md-start mt-5">
-    
-            <div class="row mt-5 mb-5 p-3" id="Helsinki">
+    <div class="" style="height: 5svw;">
+
+
+        <!--hotels section-->
+        <div class="container text-center text-md-start mt-5">
+
+            <div class="row mt-5 mb-5 p-5" id="Helsinki">
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
-                    <img src="../media/helsinki.jpg" alt="Image not found"  width="100%" height="300px">
+                    <img src="../media/helsinki.jpg" alt="Image not found" width="100%" height="300px">
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
                     <h2>Helsinki</h2>
@@ -106,13 +125,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit"
+                                name="submit"></a>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 mb-5 p-3" id="Tampere">
+            <div class="row mt-5 mb-5 p-5" id="Tampere">
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
-                    <img src="../media/tampere.jpg" alt="Image not found"  width="100%" height="300px">
+                    <img src="../media/tampere.jpg" alt="Image not found" width="100%" height="300px">
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
                     <h2>Tampere</h2>
@@ -139,17 +159,18 @@
                         <div class="p-2">
                             <p>tampere@paarynahotels.fi</p>
                         </div>
-                      
-                    </div> 
-                    <div class="col-md-6">
-                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+
                     </div>
-                    
+                    <div class="col-md-6">
+                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit"
+                                name="submit"></a>
+                    </div>
+
                 </div>
             </div>
-            <div class="row mt-5 mb-5 p-3" id="Oulu">
+            <div class="row mt-5 mb-5 p-5" id="Oulu">
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
-                    <img src="../media/oulu.jpg" alt="Image not found"  width="100%" height="300px">
+                    <img src="../media/oulu.jpg" alt="Image not found" width="100%" height="300px">
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
                     <h2>Oulu</h2>
@@ -178,13 +199,14 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit"
+                                name="submit"></a>
                     </div>
                 </div>
             </div>
-            <div class="row mt-5 mb-5 p-3" id="Turku">
+            <div class="row mt-5 mb-5 p-5" id="Turku">
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
-                    <img src="../media/turku.jpg" alt="Image not found"  width="100%" height="300px">
+                    <img src="../media/turku.jpg" alt="Image not found" width="100%" height="300px">
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-4 mx-auto mb-4">
                     <h2>Turku</h2>
@@ -213,70 +235,74 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+                        <a href=""><input class="form-control form-control-lg" value="Varaa tästä" type="submit"
+                                name="submit"></a>
                     </div>
-                
+
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-    <footer class="text-center text-lg-start bg-light text-muted">
+        <footer class="text-center text-lg-start bg-light text-muted">
 
-        <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-            <span>Löydät meidät myös sosiaalisesta mediasta!</span>
-        </div>
-    
-        <!-- Right -->
-        <div>
-            <a href="#" class="me-4 text-reset text-decoration-none">
-            <i class="bi bi-facebook"></i>
-            </a>
-            <a href="#" class="me-4 text-reset text-decoration-none">
-            <i class="bi bi-twitter"></i>
-            </a>
-            <a href="#" class="me-4 text-reset text-decoration-none">
-            <i class="bi bi-instagram"></i>
-            </a>
-            <a href="#" class="me-4 text-reset text-decoration-none">
-            <i class="bi bi-youtube"></i>
-            </a>
-        </div>
-        </section>
-    
-        <section class="footer">
-        <div class="container text-center text-md-start mt-5">
-    
-            <!-- Grid row -->
-            <div class="row mt-3">
-    
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                <h6 class="text-uppercase fw-bold mb-4">Päärynähotellit Oy</h6>
-                <p>Päärynähotellit on perustettu vuonna 2023. Se on osakeyhtiö, jonka kotipaikka on Oulu, ja pääasiallinen toimiala hotellit.</p>
-            </div>
-    
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                <div class="col">Osoite:</div>
-                <div class="col">Kotkantie 3, 90100 Oulu</div>
-                <div class="col">Sähköposti:</div>
-                <div class="col">info@paarynahotellit.fi</div>
-            </div>
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                <div class="col">Puhelin numero:</div>
-                <div class="col">044 999 888 99</div>
-                <div class="col">Y-tunnus:</div>
-                <div class="col">1234567-1 1234567-1</div>
-            </div>
-            </div>
-        </div>
-        </section>
-    </footer>
-    </body>
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+
+                <!-- Left -->
+                <div class="me-5 d-none d-lg-block">
+                    <span>Löydät meidät myös sosiaalisesta mediasta!</span>
+                </div>
+
+                <!-- Right -->
+                <div>
+                    <a href="#" class="me-4 text-reset text-decoration-none">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="me-4 text-reset text-decoration-none">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="#" class="me-4 text-reset text-decoration-none">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="me-4 text-reset text-decoration-none">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                </div>
+            </section>
+
+            <section class="footer">
+                <div class="container text-center text-md-start mt-5">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">Päärynähotellit Oy</h6>
+                            <p>Päärynähotellit on perustettu vuonna 2023. Se on osakeyhtiö, jonka kotipaikka on Oulu, ja
+                                pääasiallinen toimiala hotellit.</p>
+                        </div>
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <div class="col">Osoite:</div>
+                            <div class="col">Kotkantie 3, 90100 Oulu</div>
+                            <div class="col">Sähköposti:</div>
+                            <div class="col">info@paarynahotellit.fi</div>
+                        </div>
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <div class="col">Puhelin numero:</div>
+                            <div class="col">044 999 888 99</div>
+                            <div class="col">Y-tunnus:</div>
+                            <div class="col">1234567-1 1234567-1</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <script src='../main2.js'> </script>
+</body>
+
 </html>
