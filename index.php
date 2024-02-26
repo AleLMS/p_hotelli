@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand Medium">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
     <script src="https://kit.fontawesome.com/541d399fb7.js" crossorigin="anonymous"></script>
 
 </head>
