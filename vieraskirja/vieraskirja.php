@@ -44,67 +44,72 @@
 
         $conn->close();
     ?>
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71; padding: 0.75em; font-size: 1.2em;">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-sm navbar-dark"style="background-color: #9cda71; padding: 0,5em;  font-size: 1.4em;width: 100%;" id="nav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item topimg">
+                  <a class="nav-link" aria-current="page" href=""><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+              </li>
+            </ul>
+          </div>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-      <li class="nav-item topimg hidden-xs hidden-sm">
-                  <a class="nav-link" aria-current="page" href=""><img src="../media/paaryna.png" style="width: 60px; height: 60px;" alt="">
-                  <img src="../media/paarynalogo.png" style="width: 220px; height: 50px" alt=""></a></li>
-      <ul class="navbar-nav nav justify-content-center"></ul>
-        <li class="nav-item mt-2">
-          <a class="nav-link active" aria-current="page" href="mainpage.php">Etusivu</a></li>
-        <li class="nav-item mt-2">
-          <a class="nav-link" href="gallery.html">Galleria</a></li>
-        <li class="nav-item mt-2">
-          <a class="nav-link" href="#">Vieraskirja</a></li>
-        <li class="nav-item mt-2">
-          <a class="nav-link" href="yhteystiedot.html">Yhteystiedot</a></li>
-      </ul>
-    </div>
-</nav>
-  
-
- 
-        <!--kuva  
-        <img class="image" src="vieraskirjantausta.png" class="img-fluid" alt="Image not found" width="100%" height="100%">
-       --> 
-        <!-- tekstikentät-->
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav">   
+             <ul class="navbar-nav" style="text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">  
+                <li class="nav-item mt-2">
+                  <a class="nav-link active" aria-current="page" href="#">Etusivu</a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link active" href="galleria/gallery.html">Galleria</a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link active" href="vieraskirja/vieraskirja.php">Vieraskirja</a>
+                </li>
+                <li class="nav-item mt-2">
+                  <a class="nav-link active" href="yhteys/yhteystiedot.html">Yhteystiedot</a>
+                </li>
+                  <a class="nav-link active" href="varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit" ></a>
+             </ul>
+          </div>
+        </nav>
+        
         <div class="container-fluid" id="mainContainer" style="background-image: url(../media/vieraskirjantausta.png); background-position: center;
         background-repeat: no-repeat; background-size: cover; position: relative;">
-            <h1 class="h1 pt-5 mx-auto" style="font-size: min(8svh, 8svw); color: #ffffff; margin-bottom:15px;">Vieraskirja</h1>
+            <h1 class="h1 pt-5 mx-auto text-center" style="font-size: min(8svh, 8svw); color: #ffffff;text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px; margin-bottom:15px;">Vieraskirja</h1>
             
-    <div class="msgcontainer container mt-5 rounded-2" style=" min-height: 250px; background-color: white; border-radius: 5px; opacity: 0.7"><?php foreach ($messages as $message): ?>
-    <div class="msgarea row pt-4 pb-5" style="height:5em; ">
-              <div class="col-6 col-sm-6 col-lg-3 col-md-3">
+        <div class="msgcontainer container mt-5 pb-5 pt-5 rounded-2" style="background-color: white; border-radius: 5px; opacity: 0.8"><?php foreach ($messages as $message): ?>
+          <div class="msgarea row mb-4" style="">
+              <div class="time col-6 col-sm-6 col-lg-3 col-md-3">
                 <p><b><?php echo $message['aika']; ?></b></p>
               </div>
-              <div class="col-6 col-sm-6 col-lg-3 col-md-3">
+              <div class="name col-6 col-sm-6 col-lg-3 col-md-3">
                 <p><b><?php echo $message['nimi']; ?></b></p>
               </div>
-              <div class="col-6 col-xs-6 col-sm-6 col-lg-4 col-md-3">
-                <p><b><i>"<?php echo $message['viesti'] ?>"</i></b> </p>
+              <div class="message col-12 col-xs-6 col-sm-6 col-lg-4 col-md-3">
+                <p><i>"<?php echo $message['viesti'] ?>"</i></p>
               </div>
-              <div class="col-6 col-xs-6 col-sm-6 col-lg-2 col-md-3">
+              <div class="pears col-12 col-xs-6 col-sm-6 col-lg-2 col-md-3">
                 <p><?php for ($i = 1; $i <= $message['arvio']; $i++){
                       echo '<img src="../media/paaryna.png" width="30px" height="30px">';
                       }?></p>
               </div>
             </div><?php endforeach; ?>
-    </div>
+        </div>
          
-            <div class="row" style="height: 7svh;"></div> <!-- spacer -->
-            <div class="form container">
+        <div class="row" style="height: 7svh;"></div> <!-- spacer -->
+        <div class="form container">
             <h4 class="h4 text-white mb-4" style="text-shadow: 1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">Kirjoita vieraskirjaan kokemuksestasi hotellissamme täyttämällä alla oleva lomake. Voit arvioida kokemuksesi päärynöillä.</h4>
                <!-- form   -->
                 <form id="lomake" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       
                    <div class="row mt-3 text-center" id="input">
-                        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name"></div>
-                        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg"  id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message"></div>
+                        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg" id="nimikentta" type="text" placeholder="Kirjoita tähän nimesi.." name="name">
+                        </div>
+                        <div class="col-md-6 col-lg-3 col-xl-3 mx-auto mb-4"><input class="form-control form-control-lg"  id="tekstikentta" type="text" placeholder="Kirjoita tähän viesti..." name="message">
+                        </div>
                         <div class="col-md-6 col-lg-4 col-xl-4 mx-auto mb-4 rating">
                           <button type="button" class="btn paarynat " onclick="rating(1);" id="paaryna1"><img  src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p1"></button>
                           <button type="button" class="btn paarynat" onclick="rating(2);" id="paaryna2"><img  src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p2"></button>
@@ -115,10 +120,10 @@
                         </div>
                         <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4"><input class="form-control form-control-lg" type="submit" name="submit"></div>
                     </div>
-                  </form>
+                </form>
            
                   
-            </div>
+                 </div>
             <div class="row" style="height: 5svh;"></div> <!-- spacer -->
         </div>
  

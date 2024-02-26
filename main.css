@@ -5,44 +5,8 @@ a {
     text-decoration: none;
 }
 
-
 body{
     background-color: rgb(247, 243, 243);
-}
-
-/* Slideshow container */
-.slideshow-container {
-position: relative;
-margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-cursor: pointer;
-position: absolute;
-top: 50%;
-width: auto;
-padding: 16px;
-margin-top: -22px;
-color: grey;
-font-weight: bold;
-font-size: 18px;
-transition: 0.6s ease;
-border-radius: 0 3px 3px 0;
-user-select: none;
-}
-
-.next {
-right: 0;
-border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-background-color: #f1f1f1;
-color: black;
-}
-table {
-text-align: center;
 }
 @font-face {
    font-family: Qilka Bold;
@@ -130,17 +94,17 @@ h3, h1 {
    top: 40%;
    left: 0%;
 }
-      
+.topimg{
+   display: none;
+}     
 }
 @media only screen and (max-width: 600px) {
 .pear2{
    display: none;
 }
-}
-@media only screen and (max-width: 780px) {
-/*.topimg{
+nav .form-control {
    display: none;
-}*/
+}
 }
 .btn2 {
 
