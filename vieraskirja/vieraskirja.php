@@ -44,34 +44,58 @@
 
   $conn->close();
   ?>
-  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71; padding: 0,5em;  font-size: 1.4em;width: 100%;" id="nav">
+
+  <!--Nav-->
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9cda71; padding: 0.75em; font-size: 1.2em;">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav">
-        <li class="nav-item topimg">
-          <a class="nav-link" aria-current="page" href=""><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
-        </li>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!--Large/Desktop-->
+      <ul class="navbar-nav d-none d-sm-flex" style="display:flex; justify-content: space-between; flex-direction: row; width: 100%;">
+        <div style="display:flex; flex-direction: row;">
+          <li class="nav-item topimg hidden-xs hidden-sm">
+            <a class="nav-link" aria-current="page" href="../index.php"><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
+          </li>
+        </div>
+        <div class="" style="display:flex; flex-direction: row; align-items: center;">
+          <li class="nav-item ">
+            <a class="nav-link" aria-current="page" href="../index.php">Etusivu</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="../galleria/gallery.html">Galleria</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link active" href="../vieraskirja/vieraskirja.php">Vieraskirja</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="../yhteys/yhteystiedot.html">Yhteystiedot</a>
+          </li>
+          <li class="nav-item hidden-xs hidden-sm">
+            <a class="nav-link " href="../varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+          </li>
+        </div>
       </ul>
-    </div>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav" style="text-shadow:1px 1px 2px black, 0 0 25px #b8afae, 0 0 5px;">
-        <li class="nav-item mt-2">
-          <a class="nav-link active" aria-current="page" href="#">Etusivu</a>
+      <!--Small/Mobile-->
+      <ul class="navbar-nav d-block d-sm-none">
+        <li class="nav-item topimg hidden-xs hidden-sm">
+          <a class="nav-link" aria-current="page" href="../index.php"><img src="../media/logo2.png" style="width: 450px; height: 50px;" alt="Image not found"></a>
         </li>
-        <li class="nav-item mt-2">
-          <a class="nav-link active" href="galleria/gallery.html">Galleria</a>
+        <li class="nav-item ">
+          <a class="nav-link " aria-current="page" href="../index.php">Etusivu</a>
         </li>
-        <li class="nav-item mt-2">
-          <a class="nav-link active" href="vieraskirja/vieraskirja.php">Vieraskirja</a>
+        <li class="nav-item ">
+          <a class="nav-link" href="../galleria/gallery.html">Galleria</a>
         </li>
-        <li class="nav-item mt-2">
-          <a class="nav-link active" href="yhteys/yhteystiedot.html">Yhteystiedot</a>
+        <li class="nav-item ">
+          <a class="nav-link active" href="../vieraskirja/vieraskirja.php">Vieraskirja</a>
         </li>
-        <a class="nav-link active" href="varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+        <li class="nav-item ">
+          <a class="nav-link " href="../yhteys/yhteystiedot.html">Yhteystiedot</a>
+        </li>
+        <li class="nav-item hidden-xs hidden-sm">
+          <a class="nav-link " href="../varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -118,7 +142,7 @@
             <button type="button" class="btn paarynat" onclick="rating(5);" id="paaryna5"><img src="../media/paaryna.png" width="30px" height="30px" alt="Image not found" id="p5"></button>
             <input type="hidden" name="arvio" id="arvio">
           </div>
-          <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4"><input class="form-control form-control-lg" type="submit" name="submit"></div>
+          <div class="col-md-6 col-lg-2 col-xl-2 mx-auto mb-4"><input id="sendMsg" class="form-control form-control-lg" type="submit" name="submit"></div>
         </div>
       </form>
 
