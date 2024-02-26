@@ -12,6 +12,7 @@ var selectedRoom = [];
 window.addEventListener('load', function () {
 
     dateEvents();
+    datesToToday();
 
     // Limit room size selection
     const roomSizeSelector = document.getElementById('huoneenKoko');
@@ -23,6 +24,7 @@ window.addEventListener('load', function () {
     // SAMPLE -> ?sijainti=1&huoneenKoko=1&startDate=1990-11-11&endDate=1990-12-12&sendSearch=Hae
     const urlSearch = window.location.search;
     if (urlSearch) crossSiteSearch(urlSearch);
+    else ajaxSearch(1, 1, document.getElementById("startDate").value, document.getElementById("endDate").value)
 
     // Get post
     document.forms['searchForm'].addEventListener('submit', function (event) {
@@ -125,7 +127,21 @@ function dateEvents() {
             checkDates();
         })
     }
+}
 
+function datesToToday() {
+    // Get date form fields
+    const startDateSelector = document.getElementById("startDate");
+    const endDateSelector = document.getElementById("endDate");
+
+    // Store current date
+    const today = new Date();
+    const yyyy = today.getFullYear().toString().padStart(2, 0);
+    const mm = (today.getMonth() + 1).toString().padStart(2, 0);
+    const dd = today.getDate().toString().padStart(2, 0);
+
+    startDateSelector.value = yyyy + '-' + mm + '-' + dd;
+    endDateSelector.value = yyyy + '-' + mm + '-' + dd;
 }
 
 function checkDates() {
@@ -267,14 +283,14 @@ function AjaxUpload(data, container) {
     ajax.onload = async () => {
         if (ajax.status === 200) {
             console.log(ajax.responseText);
-            container.innerHTML = "Success";
+            container.innerHTML = "Huone varattu!";
             document.getElementById('next').remove();
             document.getElementById('cancelBooking').innerHTML = "Sulje";
         } else {
             let results = ajax.responseText;
             let code = ajax.status;
             console.log(results + " | " + code);
-            container.innerHTML = "Error: " + results;
+            container.innerHTML = "Huoneen varaaminen epäonnistui, virhe: " + results;
         }
     }
 

@@ -49,15 +49,15 @@
                     <a class="nav-link active" aria-current="page" href="#">Etusivu</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link active" href="galleria/gallery.html">Galleria</a>
+                    <a class="nav-link " href="galleria/gallery.html">Galleria</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link active" href="vieraskirja/vieraskirja.php">Vieraskirja</a>
+                    <a class="nav-link " href="vieraskirja/vieraskirja.php">Vieraskirja</a>
                 </li>
                 <li class="nav-item mt-2">
-                    <a class="nav-link active" href="yhteys/yhteystiedot.html">Yhteystiedot</a>
+                    <a class="nav-link " href="yhteys/yhteystiedot.html">Yhteystiedot</a>
                 </li>
-                <a class="nav-link active" href="varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
+                <a class="nav-link " href="varaus/varaus.html"><input class="form-control form-control-lg" value="Varaa tästä" type="submit" name="submit"></a>
                 </li>
             </ul>
         </div>
