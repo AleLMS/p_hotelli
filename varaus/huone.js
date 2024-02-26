@@ -1,26 +1,34 @@
-export class Huone {
-    constructor(id, avatar, name, timestamp, message) {
-        this.id = id;
-        this.avatar = avatar;
-        this.name = name;
-        this.timestamp = timestamp;
-        this.message = message;
+export class Room {
+    constructor(object) {
+        for (const [key, value] of Object.entries(object)) {
+            this[key] = value;
+        }
+
     }
 
-    prepareMessage(templateID) {
+    prepareRoom(templateID) {
         let template = document.getElementById(templateID).innerHTML;
         for (const [key, value] of Object.entries(this)) {
             const replace = "{{" + key + "}}";
-            template = template.replace(replace, value);
+            template = template.replaceAll(replace, value);
         }
         return template;
+
     }
 
     // Could expose the first argument of the insertAdjacentHTML method for more control
     displayBefore(insertPoint, templateID) {
-        let preparedMessage = this.prepareMessage(templateID);
-        if (!document.getElementById('message' + this.id)) // Check that the message has not been displayed already
-            insertPoint.insertAdjacentHTML('beforebegin', preparedMessage);
+        let prepareRoom = this.prepareRoom(templateID);
+        if (!document.getElementById('room' + this.id)) // Check that the message has not been displayed already
+            insertPoint.insertAdjacentHTML('beforebegin', prepareRoom);
+
+    }
+
+    displayAsChild(parent, templateID) {
+        let prepareRoom = this.prepareRoom(templateID);
+        if (!document.getElementById('room' + this.id)) // Check that the message has not been displayed already
+            parent.innerHTML += prepareRoom;
+
     }
 
 }
