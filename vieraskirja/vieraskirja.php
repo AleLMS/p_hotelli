@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  <button onclick="toTheTop();" id="topbtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
 
   <?php
 
